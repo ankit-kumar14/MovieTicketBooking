@@ -24,6 +24,7 @@ The ticket model includes the following properties:
 - Movie title
 - Movie time
 - Ticket price
+- IMDB ratings
 
 The backend application provides the following functionality:
 
