@@ -1,23 +1,19 @@
-const jwt = require('jsonwebtoken');
-const { TOKEN_SECRET } = require('../utils/auth');
+const jwt = require("jsonwebtoken");
+const { TOKEN_SECRET } = require("../utils/auth");
 
 function authenticationMiddleware(req, res, next) {
   let token = req.headers.authorization;
-  token = token.split(' ');
 
   if (!token) {
-    return res.status(401).json({ error: 'Unauthorized' });
+    return res.status(401).json({ error: "Unauthorized" });
+  } else {
+    token = token.split(" ");
   }
-
   try {
-    console.log(token[1], "---------", TOKEN_SECRET)
     const decoded = jwt.verify(token[1], TOKEN_SECRET);
-    console.log(decoded)
-    req.user = decoded;
-    console.log("Authenticated")
     next();
   } catch (error) {
-    return res.status(401).json({ error: 'Invalid token' });
+    return res.status(401).json({ error: "Invalid token" });
   }
 }
 

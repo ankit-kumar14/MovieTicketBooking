@@ -1,6 +1,4 @@
 const db = require('../utils/db');
-console.log("In service")
-console.log(db.query)
 async function createTicket(ticket) {
   const query = `
     INSERT INTO tickets (creation_date, customer_name, movie_title, movie_time, ticket_price, imdb_ratings)
